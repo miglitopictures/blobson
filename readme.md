@@ -15,7 +15,7 @@ This started as a way to learn pico-8 and lua from scratch, picked up from a bun
 - **levels** — laid out in a 4-wide grid on the shared map (so level 4 wraps to a new row), with helper functions handling the level → map-cell math
 - **lives system** — 3 lives, temporary invincibility after taking a hit, restart prompt on death
 - **camera** — basic camera system (currently mostly static; scrolling toggle is there for later)
-- **debug mode** — 🅾️ toggles an overlay showing collision states, current level, and live entity counts
+- **debug mode** — "z" toggles an overlay showing collision states, current level, and live entity counts
 - **music & sfx** — background music plus sound effects for jumps, hits, stomps, and level transitions
 
 ## status
