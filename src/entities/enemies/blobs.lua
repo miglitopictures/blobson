@@ -1,11 +1,11 @@
 function init_blobs()
 	blobs = {}
 	--check map for blobs
-	for i=level*16, (level*16) + 15 do
+	for i=0, 15 do
 		for j=0, 15 do
-			tile = mget(i,j)
+			tile = map_get(i,j)
 			if tile == tiles.blob then
-				mset(i,j,0)
+				map_set(i,j,tiles.empty)
 				add(blobs, {
 					sp = tiles.blob,
 					x = i*8,

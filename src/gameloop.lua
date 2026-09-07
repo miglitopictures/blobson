@@ -1,10 +1,10 @@
-debug=false
+debug=true
 simple_camera=false
 
 map_start = 0
 map_end = 1024
 
-level = 0
+level = 5
 
 -- look-up tables
 flag = {

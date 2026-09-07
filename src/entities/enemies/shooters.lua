@@ -4,9 +4,9 @@ function init_shooters()
 	bullets = {}
 	shooters = {}
 	--check map for shooters
-	for i=level*16, (level*16) + 15 do
+	for i=0, 15 do
 		for j=0, 15 do
-			tile = mget(i,j)
+			tile = map_get(i,j)
 			if tile == tiles.shooter_right then
 				add(shooters, {
 					sp = tiles.shooter_right,
@@ -48,7 +48,7 @@ function update_shooters()
 	for b in all(bullets) do
 		b.x+=b.dx
 		b.life-=1
-		t = mget(b.x/8,b.y/8)
+		t = map_get(b.x/8,b.y/8)
 		if b.life <= 0 or not (t == tiles.empty or t == tiles.shooter_right or t == tiles.shooter_left) then
 			del(bullets, b)
 		end
