@@ -1,35 +1,35 @@
 function init_player()
 	p = {
-        alive=true,
-        lives=3,
-        mortal=true,
-        sp=1,
-        x=59,
-        y=59,
-        w=8,
-        h=8,
-        flp=false, --flip sprite
-        dx=0, --change in x
-        dy=0, --change in y
-        max_dx=3,
-        max_dy=3,
-        acc=0.5,
-        boost=4,
-        anim=0,
-        running=false,
-        jumping=false,
-        falling=false,
-        sliding=false,
-        landed=false
-    }
+		alive=true,
+		lives=3,
+		mortal=true,
+		sp=1,
+		x=59,
+		y=59,
+		w=8,
+		h=8,
+		flp=false, --flip sprite
+		dx=0, --change in x
+		dy=0, --change in y
+		max_dx=3,
+		max_dy=3,
+		acc=0.5,
+		boost=4,
+		anim=0,
+		running=false,
+		jumping=false,
+		falling=false,
+		sliding=false,
+		landed=false
+	}
 
 	-- debug info
 	---------test----------
-    collide_l="no"
-    collide_r="no"
-    collide_u="no"
-    collide_d="no"
-    -----------------------
+	collide_l="no"
+	collide_r="no"
+	collide_u="no"
+	collide_d="no"
+	-----------------------
 end
 
 function update_player()
@@ -97,7 +97,7 @@ function update_player()
 				p.mortal=false
 				set_event(10, function() p.mortal = true end)
 				p.dy=p.dy-p.boost
-			//	p.dx=p.dx+p.boost
+				p.dx=p.dx+p.boost
 				p.landed=false
 				sfx(00)
 				
@@ -136,8 +136,6 @@ function update_player()
 				p.dx=p.dx+p.boost
 				p.landed=false
 				sfx(00)
-				
-				
 			end
 		
 		elseif p.dx>0 then
@@ -162,8 +160,6 @@ function update_player()
 				p.landed=false
 				
 				sfx(00)
-				
-				
 			end
 		end
 		
@@ -177,52 +173,51 @@ function update_player()
 		end
 		
 		for b in all(blobs) do
-    -- check if player and blob boxes overlap
-    -- using a small margin (2 pixels) to make it feel fair
+			-- check if player and blob boxes overlap
+			-- using a small margin (2 pixels) to make it feel fair
 			if p.mortal and
-	  p.x < b.x + b.w - 2 and
-	  p.x + p.w - 2 > b.x and
-	  p.y < b.y + b.h - 2 and
-	  p.y + p.h - 2 > b.y then
-  
-    if p.dy > 0 and p.y < b.y + 2 then
-     -- stomp logic
-     p.dy = -p.boost
-     b.sp=49
-     b.dx=0
-     set_event(5,function() del(blobs, b) end)
-     
-     sfx(7)
-    else
-     -- damage logic
-     p.lives -= 1
-     p.mortal = false
-     set_event(30, function() p.mortal = true end)
-     p.dy = -p.boost
-     p.dx = (p.x < b.x) and -2 or 2 -- knockback
-     sfx(0)
-    end
-   end
+			p.x < b.x + b.w - 2 and
+			p.x + p.w - 2 > b.x and
+			p.y < b.y + b.h - 2 and
+			p.y + p.h - 2 > b.y then
+
+				if p.dy > 0 and p.y < b.y + 2 then
+					-- stomp logic
+					p.dy = -p.boost
+					b.sp=49
+					b.dx=0
+					set_event(5,function() del(blobs, b) end)
+					
+					sfx(7)
+				else
+					-- damage logic
+					p.lives -= 1
+					p.mortal = false
+					set_event(30, function() p.mortal = true end)
+					p.dy = -p.boost
+					p.dx = (p.x < b.x) and -2 or 2 -- knockback
+					sfx(0)
+				end
+			end
 		end
 	
 		for b in all(bullets) do
-    -- check if player and blob boxes overlap
-    -- using a small margin (2 pixels) to make it feel fair
+			-- check if player and blob boxes overlap
+			-- using a small margin (2 pixels) to make it feel fair
 			if p.mortal and
-	  p.x < b.x + 4 - 2 and
-	  p.x + p.w - 2 > b.x and
-	  p.y < b.y + 4 - 2 and
-	  p.y + p.h - 2 > b.y then
-  
-		   -- damage logic
-		   p.lives -= 1
-		   p.mortal = false
-		   set_event(10, function() p.mortal = true end)
-		   p.dy = -p.boost
-		   p.dx =  b.dx *2
-		   del(bullets,b)
-		   sfx(0)
-   end
+			p.x < b.x + 4 - 2 and
+			p.x + p.w - 2 > b.x and
+			p.y < b.y + 4 - 2 and
+			p.y + p.h - 2 > b.y then
+				-- damage logic
+				p.lives -= 1
+				p.mortal = false
+				set_event(10, function() p.mortal = true end)
+				p.dy = -p.boost
+				p.dx =  b.dx *2
+				del(bullets,b)
+				sfx(0)
+			end
 		end
 					
 		
@@ -245,9 +240,6 @@ function update_player()
 	if p.x>map_end-p.w then
 		p.x=map_end-p.w
 	end
-	
-	
-	
 	
 end
 
@@ -289,7 +281,7 @@ function draw_player()
 
 	-- player lives
 	for i=1, p.lives do
- 	    -- spr(15,i*10+p.x,p.y,1,1)
-        circfill(p.x-1+i*2+(3-p.lives),p.y-4,0,11)
-    end
+		-- spr(15,i*10+p.x,p.y,1,1)
+		circfill(p.x-1+i*2+(3-p.lives),p.y-4,0,11)
+	end
 end

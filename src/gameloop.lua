@@ -1,6 +1,6 @@
 function _init()
     debug=false
-    debug_msg="start"
+    
     simple_camera=false
     -- contants
     gravity=0.3
@@ -12,21 +12,18 @@ function _init()
     -- reload map to initial state in memory
 	reload(0x2000, 0x2000, 0x1000) 
 
+    -- init timers table
     init_timers()
+
+    --init entities
     init_player()
-    --init enemies
     init_blobs()
     init_shooters()
     
-
-
+    -- init camera
     init_camera()
-    
 
     music(0)
- 
-
- 
 end
 
 function _update()

@@ -8,16 +8,15 @@ function init_blobs()
 				mset(i,j,0)
 				add(blobs, {
 					sp = 48,
-				 x = i*8,
-				 y = j*8,
-				 dx = 1,
-				 dy = 0,
-				 w=8,
-				 h=8,
-				 flp=false,
-				 
-				 landed=true,
-				 falling=false,
+					x = i*8,
+					y = j*8,
+					dx = 1,
+					dy = 0,
+					w=8,
+					h=8,
+					flp=false,
+					landed=true,
+					falling=false,
 				})
 			end
 		end
@@ -32,17 +31,16 @@ function update_blobs()
 	for b in all(blobs) do
 		b.dy=b.dy+gravity
 		
-		if collide_map(b,"right",0) or
-					collide_map(b,"left",0)  then
-				b.dx*=-1
+		if collide_map(b,"right",0) or collide_map(b,"left",0)  then
+			b.dx*=-1
 		end
 		
 		if	collide_map(b,"down",0)  then
-				b.landed=true
-				b.falling=false
-				b.dy=0
-				-- snap to tile
-				b.y=b.y-(((b.y+b.h+1)%8)-1)
+			b.landed=true
+			b.falling=false
+			b.dy=0
+			-- snap to tile
+			b.y=b.y-(((b.y+b.h+1)%8)-1)
 		end
 		
 		b.y+=b.dy
@@ -53,7 +51,6 @@ end
 function animate_blob()
 	for b in all(blobs) do
 		if b.dx > 0 then
-		
 			b.flp=false
 		else
 			b.flp=true
@@ -62,7 +59,6 @@ function animate_blob()
 end
 
 function draw_blobs()
-
 	for b in all(blobs) do
 		spr(b.sp, b.x,b.y, 1,1,b.flp)
 	end
@@ -79,23 +75,23 @@ function init_shooters()
 		for j=0, 15 do
 			tile = mget(i,j)
 			if tile == 112 then
-				--mset(i,j,0)
+			--mset(i,j,0)
 				add(shooters, {
 					sp = 112,
 					dir=1,
 					flp=false,
-				 x = i*8,
-				 y = j*8,
+					x = i*8,
+					y = j*8,
 				})
-				end
-				if tile == 113 then
-				--mset(i,j,0)
+			end
+			if tile == 113 then
+			--mset(i,j,0)
 				add(shooters, {
 					sp = 112,
 					dir=-1,
 					flp=true,
-				 x = i*8,
-				 y = j*8,
+					x = i*8,
+					y = j*8,
 				})
 			end
 		end
