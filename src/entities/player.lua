@@ -1,3 +1,29 @@
+function player_init()
+	p={
+        alive=true,
+        lives=3,
+        mortal=true,
+        sp=1,
+        x=59,
+        y=59,
+        w=8,
+        h=8,
+        flp=false, --flip sprite
+        dx=0, --change in x
+        dy=0, --change in y
+        max_dx=3,
+        max_dy=3,
+        acc=0.5,
+        boost=4,
+        anim=0,
+        running=false,
+        jumping=false,
+        falling=false,
+        sliding=false,
+        landed=false
+    }
+end
+
 function player_update()
 	--physics
 	p.dy=p.dy+gravity

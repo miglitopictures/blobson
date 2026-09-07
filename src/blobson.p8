@@ -4,12 +4,12 @@ __lua__
 -- blobson jr.
 -- by: miglito & vicks
 
-#include math.lua
-#include timers.lua
-#include collisions.lua
-#include player.lua
-#include enemies.lua
-#include main.lua
+#include utils/math.lua
+#include utils/timers.lua
+#include utils/collisions.lua
+#include entities/player.lua
+#include entities/enemies.lua
+#include gameloop.lua
 __gfx__
 00000000000000000000000000000000009999000099990000000000009999000099990000000000000000000000000000000000000000000000000000000000
 00000000009999000099990000999900099999900999999000999900099999900999999000000000009999000000000000000000000000000000000008800880

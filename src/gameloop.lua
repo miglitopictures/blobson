@@ -1,31 +1,9 @@
 function _init()
 	reload(0x2000, 0x2000, 0x1000) -- reloads map data from the rom to ram
     dbg="start"
-        init_timers()
+    init_timers()
 
-    p={
-        alive=true,
-        lives=3,
-        mortal=true,
-        sp=1,
-        x=59,
-        y=59,
-        w=8,
-        h=8,
-        flp=false, --flip sprite
-        dx=0, --change in x
-        dy=0, --change in y
-        max_dx=3,
-        max_dy=3,
-        acc=0.5,
-        boost=4,
-        anim=0,
-        running=false,
-        jumping=false,
-        falling=false,
-        sliding=false,
-        landed=false
-    }
+    player_init()
     
     gravity=0.3
     friction=0.9
@@ -61,16 +39,16 @@ function _update()
 	animate_blob()
 	update_shooters()
 	
---	--simple camera
---	cam_x=p.x-64+p.w/2
---	
---	if cam_x<map_start then
---		cam_x=map_start
---	end
---	if cam_x>map_end-128 then
---		cam_x=map_end-128
---	end
---	camera(cam_x,0)
+	--simple camera
+	-- cam_x=p.x-64+p.w/2
+	
+	-- if cam_x<map_start then
+	-- 	cam_x=map_start
+	-- end
+	-- if cam_x>map_end-128 then
+	-- 	cam_x=map_end-128
+	-- end
+	-- camera(cam_x,0)
 	
 	--timers
 	update_timers()
@@ -105,14 +83,14 @@ function _draw()
  
  end
 	
--- print(#blobs,cam_x+3,50)
-	---------test----------
---	rect(x1r,y1r,x2r,y2r,7)
---	print("⬅️= "..collide_l,p.x,p.y-10)
---	print("➡️= "..collide_r,p.x,p.y-16)
---	print("⬆️= "..collide_u,p.x,p.y-22)
---	print("⬇️= "..collide_d,p.x,p.y-28)
-	-----------------------
+print(#blobs,cam_x+3,50)
+	-------test----------
+	rect(x1r,y1r,x2r,y2r,7)
+	print("⬅️= "..collide_l,p.x,p.y-10)
+	print("➡️= "..collide_r,p.x,p.y-16)
+	print("⬆️= "..collide_u,p.x,p.y-22)
+	print("⬇️= "..collide_d,p.x,p.y-28)
+	---------------------
 	
---	print(dbg,cam_x+5,8)
+	-- print(dbg,cam_x+5,8)
 end
