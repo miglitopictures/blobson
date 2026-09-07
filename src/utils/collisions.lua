@@ -25,10 +25,10 @@ function collide_map(obj,aim,flag)
 	x1=x1/8 y1=y1/8
 	x2=x2/8 y2=y2/8
 	
-	if fget(mget(x1,y1), flag)
-	or fget(mget(x1,y2), flag)
-	or fget(mget(x2,y1), flag)
-	or fget(mget(x2,y2), flag) then
+	if fget(mget(x1 + level*16,y1), flag)
+	or fget(mget(x1 + level*16,y2), flag)
+	or fget(mget(x2 + level*16,y1), flag)
+	or fget(mget(x2 + level*16,y2), flag) then
 		return true
 	else
 		return false

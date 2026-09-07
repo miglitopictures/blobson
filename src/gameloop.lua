@@ -4,32 +4,33 @@ simple_camera=false
 map_start = 0
 map_end = 1024
 
+level = 0
+
 -- look-up tables
 flag = {
     solid_down = 0,
     solid_up = 1,
-    spike = 7,
+    flower = 6,
+    spike = 7
 }
-
 tiles = {
     empty = 0,
     blob = 48,
     shooter_right = 112,
-    shooter_left = 113,
+    shooter_left = 113
 }
 
 function _init()
     -- contants
     gravity=0.3
     friction=0.9
-
-
+    
     -- reload map to initial state in memory
 	reload(0x2000, 0x2000, 0x1000) 
-
+    
     -- init timers table
     init_timers()
-
+    
     --init entities
     init_player()
     init_blobs()
@@ -65,7 +66,7 @@ end
 
 function _draw()
 	cls(0)
-	map(0,0)
+	map(level*16,0)
 
     -- draw entities
 	draw_player()
@@ -84,6 +85,7 @@ function _draw()
     if debug then
         color(7)
         print('blobs = ' ..#blobs,cam_x+3,3)
+        print('level = ' ..level, cam_x+3)
         -------test----------
         print("⬅️= "..collide_l,p.x,p.y-10)
         print("➡️= "..collide_r,p.x,p.y-16)

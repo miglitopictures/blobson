@@ -102,6 +102,10 @@ function update_player()
 				sfx(00)
 				
 			end
+
+			if collide_map(p,"down",flag.flower) and not level_changing then
+				change_level(level + 1)
+			end
 		
 		elseif p.dy<0 then
 			p.jumping=true

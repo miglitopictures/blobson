@@ -3,12 +3,11 @@
 function init_shooters()
 	bullets = {}
 	shooters = {}
-	--check map for blobs
-	for i=0,15 do
-		for j=0, 15 do
+	--check map for shooters
+	for i=level*16, (level*16) + 15 do
+		for j=level*16, (level*16) + 15 do
 			tile = mget(i,j)
 			if tile == tiles.shooter_right then
-			--mset(i,j,0)
 				add(shooters, {
 					sp = tiles.shooter_right,
 					dir=1,
@@ -18,7 +17,6 @@ function init_shooters()
 				})
 			end
 			if tile == tiles.shooter_left then
-			--mset(i,j,0)
 				add(shooters, {
 					sp = tiles.shooter_right, -- flipped sprite
 					dir=-1,

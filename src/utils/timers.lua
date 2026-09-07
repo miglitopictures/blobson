@@ -3,9 +3,9 @@ function init_timers()
 end
 
 function update_timers()
-	// check all timers
+	-- check all timers
 	for timer in all(timers) do
-		// decrease timers
+		-- decrease timers
 		timer.t-=1
 		
 		if timer.t <= 0 then
