@@ -1,7 +1,7 @@
 # blobson jr.
 A simple platformer for the pico-8 fantasy console.
 
-<img src="src/blobson.p8.png" alt="blobson jr. cart label" width="480" style="image-rendering: pixelated; image-rendering: crisp-edges;">
+![game cart](./src/blobson.p8.png)
 
 ## the exercise
 This started as a way to learn pico-8 and lua from scratch, picked up from a bunch of tutorials by various pico-8 enthusiasts. The player movement in particular is heavily inspired by [nerdyteachers' platformer guide](https://nerdyteachers.com/explain/platformer/), with some customizations on top. Enemies, hazards, and the level system were then built out from there. This exercise is meant as a base for future level design practice.
