@@ -113,10 +113,6 @@ function update_player()
 				sfx(00)
 				
 			end
-
-			if collide_map(p,"down",flag.flower) and not level_changing then
-				change_level(level + 1)
-			end
 		
 		elseif p.dy<0 then
 			p.jumping=true
@@ -152,6 +148,7 @@ function update_player()
 				p.landed=false
 				sfx(00)
 			end
+
 		
 		elseif p.dx>0 then
 		
@@ -176,6 +173,8 @@ function update_player()
 				
 				sfx(00)
 			end
+
+
 		end
 		
 		--stop sliding
@@ -233,6 +232,10 @@ function update_player()
 				del(bullets,b)
 				sfx(0)
 			end
+		end
+
+		if not level_changing and dist(p.x,p.y,flower.x,flower.y) < 4 then
+			change_level(level+1)
 		end
 					
 		

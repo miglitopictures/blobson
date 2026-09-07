@@ -10,13 +10,13 @@ level = 0
 flag = {
     solid_down = 0,
     solid_up = 1,
-    flower = 6,
     spike = 7
 }
 tiles = {
     empty = 0,
     player = 1,
     blob = 48,
+    flower = 79,
     shooter_right = 112,
     shooter_left = 113
 }
@@ -31,6 +31,9 @@ function _init()
     
     -- init timers table
     init_timers()
+
+    -- init flower
+    init_flower()
     
     --init entities
     init_player()
@@ -50,14 +53,16 @@ function _update()
     end
 
     -- update all set timers
-	update_timers()
-
-    -- update and animate entites
-	update_blobs()
-	update_player()
-	animate_player()
-	animate_blob()
-	update_shooters()
+    update_timers()
+    
+    if not level_changing then
+        -- update and animate entites
+        update_blobs()
+        update_player()
+        animate_player()
+        animate_blob()
+        update_shooters()
+    end
 
     -- update camera  // not used in one-room
 	-- if simple_camera then
