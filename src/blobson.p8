@@ -6,6 +6,7 @@ __lua__
 
 #include utils/math.lua
 #include utils/timers.lua
+#include utils/camera.lua
 #include utils/collisions.lua
 #include entities/player.lua
 #include entities/enemies.lua

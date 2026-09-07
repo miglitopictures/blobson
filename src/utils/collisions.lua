@@ -21,11 +21,6 @@ function collide_map(obj,aim,flag)
 		x2=x+w-3 y2=y+h --
 	end
 	
-	---------test----------
-	x1r=x1 y1r=y1
-	x2r=x2 y2r=y2
-	-----------------------
-	
 	--pixels to tiles
 	x1=x1/8 y1=y1/8
 	x2=x2/8 y2=y2/8

@@ -1,5 +1,5 @@
-function player_init()
-	p={
+function init_player()
+	p = {
         alive=true,
         lives=3,
         mortal=true,
@@ -22,9 +22,17 @@ function player_init()
         sliding=false,
         landed=false
     }
+
+	-- debug info
+	---------test----------
+    collide_l="no"
+    collide_r="no"
+    collide_u="no"
+    collide_d="no"
+    -----------------------
 end
 
-function player_update()
+function update_player()
 	--physics
 	p.dy=p.dy+gravity
 	p.dx=p.dx*friction
@@ -92,7 +100,6 @@ function player_update()
 			//	p.dx=p.dx+p.boost
 				p.landed=false
 				sfx(00)
-				dbg="spike damage down"
 				
 			end
 		
@@ -118,9 +125,9 @@ function player_update()
 				p.dx=0
 				--------test----------
 				collide_l="yes"
-				else collide_l="no"
 				----------------------
 			end
+			collide_r="no"
 			if collide_map(p,"left",7) and p.mortal then
 				p.lives-=1
 				p.mortal=false
@@ -130,7 +137,6 @@ function player_update()
 				p.landed=false
 				sfx(00)
 				
-				dbg="spike damage left"
 				
 			end
 		
@@ -142,9 +148,10 @@ function player_update()
 				p.dx=0
 				--------test----------
 				collide_r="yes"
-				else collide_r="no"
 				----------------------
 			end
+
+			collide_l="no"
 			
 			if collide_map(p,"right",7) and p.mortal then
 				p.lives-=1
@@ -156,7 +163,6 @@ function player_update()
 				
 				sfx(00)
 				
-				dbg="spike damage right"
 				
 			end
 		end
@@ -187,7 +193,6 @@ function player_update()
      set_event(5,function() del(blobs, b) end)
      
      sfx(7)
-     dbg="killed blob"
     else
      -- damage logic
      p.lives -= 1
@@ -196,7 +201,6 @@ function player_update()
      p.dy = -p.boost
      p.dx = (p.x < b.x) and -2 or 2 -- knockback
      sfx(0)
-     dbg="blob damage"
     end
    end
 		end
@@ -218,7 +222,6 @@ function player_update()
 		   p.dx =  b.dx *2
 		   del(bullets,b)
 		   sfx(0)
-		   dbg="blob damage"
    end
 		end
 					
@@ -248,7 +251,7 @@ function player_update()
 	
 end
 
-function player_animate()
+function animate_player()
 	if not p.alive then
 		p.sp=10
 	elseif p.jumping then
@@ -280,3 +283,13 @@ function player_animate()
 	end
 end
 
+function draw_player()
+	-- player sprite
+	spr(p.sp, p.x, p.y, 1, 1, p.flp)
+
+	-- player lives
+	for i=1, p.lives do
+ 	    -- spr(15,i*10+p.x,p.y,1,1)
+        circfill(p.x-1+i*2+(3-p.lives),p.y-4,0,11)
+    end
+end
