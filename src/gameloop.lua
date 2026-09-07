@@ -66,7 +66,7 @@ end
 
 function _draw()
 	cls(0)
-	map(level*16,0)
+	map(to_level_x(0), to_level_y(0))
 
     -- draw entities
 	draw_player()
