@@ -2,7 +2,7 @@ function init_blobs()
 	blobs = {}
 	--check map for blobs
 	for i=level*16, (level*16) + 15 do
-		for j=level*16, (level*16) + 15 do
+		for j=0, 15 do
 			tile = mget(i,j)
 			if tile == tiles.blob then
 				mset(i,j,0)

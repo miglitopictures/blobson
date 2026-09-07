@@ -5,7 +5,7 @@ function init_shooters()
 	shooters = {}
 	--check map for shooters
 	for i=level*16, (level*16) + 15 do
-		for j=level*16, (level*16) + 15 do
+		for j=0, 15 do
 			tile = mget(i,j)
 			if tile == tiles.shooter_right then
 				add(shooters, {
