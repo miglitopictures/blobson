@@ -78,7 +78,7 @@ function update_player()
 			
 			p.dy=limit(p.dy,p.max_dy)
 		
-			if collide_map(p,"down",0) then
+			if collide_map(p,"down",flag.solid_down) then
 				p.landed=true
 				p.falling=false
 				p.dy=0
@@ -92,7 +92,7 @@ function update_player()
 			
 			end
 			
-			if collide_map(p,"down",7) and p.mortal then
+			if collide_map(p,"down",flag.spike) and p.mortal then
 				p.lives-=1
 				p.mortal=false
 				set_event(10, function() p.mortal = true end)
@@ -107,7 +107,7 @@ function update_player()
 			p.jumping=true
 			p.running = false
 			p.landed=false
-			if collide_map(p,"up",1) then
+			if collide_map(p,"up",flag.solid_up) then
 				p.dy=0
 				--------test----------
 				collide_u="yes"
@@ -121,14 +121,14 @@ function update_player()
 		
 			p.dx=limit(p.dx,p.max_dx)
 			
-			if collide_map(p,"left",1) then
+			if collide_map(p,"left",flag.solid_up) then
 				p.dx=0
 				--------test----------
 				collide_l="yes"
 				----------------------
 			end
 			collide_r="no"
-			if collide_map(p,"left",7) and p.mortal then
+			if collide_map(p,"left", flag.spike) and p.mortal then
 				p.lives-=1
 				p.mortal=false
 				set_event(10, function() p.mortal = true end)
@@ -142,7 +142,7 @@ function update_player()
 		
 			p.dx=limit(p.dx,p.max_dx)
 			
-			if collide_map(p,"right",1) then
+			if collide_map(p,"right",flag.solid_up) then
 				p.dx=0
 				--------test----------
 				collide_r="yes"
@@ -151,7 +151,7 @@ function update_player()
 
 			collide_l="no"
 			
-			if collide_map(p,"right",7) and p.mortal then
+			if collide_map(p,"right", flag.spike) and p.mortal then
 				p.lives-=1
 				p.mortal=false
 				set_event(10, function() p.mortal = true end)

@@ -1,13 +1,28 @@
+debug=false
+simple_camera=false
+
+map_start = 0
+map_end = 1024
+
+-- look-up tables
+flag = {
+    solid_down = 0,
+    solid_up = 1,
+    spike = 7,
+}
+
+tiles = {
+    empty = 0,
+    blob = 48,
+    shooter_right = 112,
+    shooter_left = 113,
+}
+
 function _init()
-    debug=false
-    
-    simple_camera=false
     -- contants
     gravity=0.3
     friction=0.9
 
-    map_start = 0
-    map_end = 1024
 
     -- reload map to initial state in memory
 	reload(0x2000, 0x2000, 0x1000) 
