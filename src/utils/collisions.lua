@@ -37,7 +37,7 @@ function collide_map(obj,aim,flag)
 end
 
 function map_get(x,y)
-	return mget(to_level_x(x), y + flr(level/4)*16)
+	return mget(to_level_x(x), to_level_y(y))
 end
 
 function map_set(x,y,tile)
