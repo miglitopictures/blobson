@@ -1,10 +1,10 @@
-debug=true
-simple_camera=false
+debug=false
+-- simple_camera=false
 
 map_start = 0
 map_end = 1024
 
-level = 5
+level = 0
 
 -- look-up tables
 flag = {
@@ -15,6 +15,7 @@ flag = {
 }
 tiles = {
     empty = 0,
+    player = 1,
     blob = 48,
     shooter_right = 112,
     shooter_left = 113
@@ -36,8 +37,8 @@ function _init()
     init_blobs()
     init_shooters()
     
-    -- init camera
-    init_camera()
+    -- init camera // not used in one-room
+    -- init_camera()
 
     music(0)
 end
@@ -58,10 +59,10 @@ function _update()
 	animate_blob()
 	update_shooters()
 
-    -- update camera
-	if simple_camera then
-        update_camera(p)
-    end
+    -- update camera  // not used in one-room
+	-- if simple_camera then
+    --     update_camera(p)
+    -- end
 end
 
 function _draw()
@@ -75,17 +76,17 @@ function _draw()
  
     -- draw restart UI
     if not p.alive then
-        print("press ❎ to restart",cam_x+28, 30,7)
+        print("press ❎ to restart",28, 30,7)
         if btnp(❎) then
             _init()
         end
     end
 	
+    color(7)
+    print('level 0' ..level+1, 2, 2)
     -- draw debug info
     if debug then
-        color(7)
-        print('blobs = ' ..#blobs,cam_x+3,3)
-        print('level = ' ..level, cam_x+3)
+        print('blobs = ' ..#blobs)
         -------test----------
         print("⬅️= "..collide_l,p.x,p.y-10)
         print("➡️= "..collide_r,p.x,p.y-16)
@@ -93,4 +94,5 @@ function _draw()
         print("⬇️= "..collide_d,p.x,p.y-28)
         ---------------------
     end
+
 end

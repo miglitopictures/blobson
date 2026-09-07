@@ -23,6 +23,17 @@ function init_player()
 		landed=false
 	}
 
+	for i=0, 15 do
+		for j=0, 15 do
+			tile = map_get(i,j)
+			if tile == tiles.player then
+				map_set(i,j,tiles.empty)
+				p.x = i*8
+				p.y = j*8
+			end
+		end
+	end
+
 	-- debug info
 	---------test----------
 	collide_l="no"

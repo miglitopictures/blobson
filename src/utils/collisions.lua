@@ -1,6 +1,6 @@
 function collide_map(obj,aim,flag)
 	--obj = table needs x,y,w,h
-	--aim = left,right,up,down
+	--aim = "left","right","up","down"
 	
 	local x=obj.x local y=obj.y
 	local w=obj.w local h=obj.h
@@ -42,12 +42,4 @@ end
 
 function map_set(x,y,tile)
 	mset(to_level_x(x), to_level_y(y), tile)
-end
-
-function to_level_x(x)
-	return x + ((level % 4)* 16)
-end
-
-function to_level_y(y)
-	return y + flr(level/4)*16
 end
